@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/release.js"></script>
 <script>(function(){try{var t=localStorage.getItem('pm-theme');
 if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
 document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
@@ -160,7 +161,7 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
         untuk membuka materi, praktikum, dan tugasnya.</p>
       </div>
       <div class="card-grid">
-<article class="week-card">
+<article class="week-card" data-week="1">
   <div class="week-card-top">
     <span class="week-number">01</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></span>
@@ -169,9 +170,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Mobile Development Ecosystem &amp; Flutter Refresh</h3>
   <p>Memahami ekosistem pengembangan aplikasi mobile, Flutter, Dart, widget tree, serta setup development environment.</p>
   <p class="week-outcome">Mahasiswa mampu menjelaskan pendekatan native, hybrid, dan cross-platform serta menyiapkan lingkungan kerja Flutter yang siap pakai.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-01.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-01.html" data-week-cta="1">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="2">
   <div class="week-card-top">
     <span class="week-number">02</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg></span>
@@ -180,9 +184,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Pemrograman Dasar Dart &ndash; Bagian 1</h3>
   <p>Karakteristik bahasa Dart, Dart SDK, kompilasi JIT dan AOT, variabel, tipe data, operator, serta null safety.</p>
   <p class="week-outcome">Mahasiswa mampu menulis program Dart dasar dengan tipe data dan null safety yang benar menggunakan DartPad.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-02.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-02.html" data-week-cta="2">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="3">
   <div class="week-card-top">
     <span class="week-number">03</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></span>
@@ -191,9 +198,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Pemrograman Dasar Dart &ndash; Bagian 2</h3>
   <p>Alur kendali program: percabangan, perulangan, ekspresi kondisional, serta penanganan exception di Dart.</p>
   <p class="week-outcome">Mahasiswa mampu menyusun logika program dengan percabangan, perulangan, dan penanganan error yang tepat.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-03.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-03.html" data-week-cta="3">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="4">
   <div class="week-card-top">
     <span class="week-number">04</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg></span>
@@ -202,9 +212,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Pemrograman Dasar Dart &ndash; Bagian 3</h3>
   <p>Struktur data koleksi List, Set, Map, iterable, serta function tingkat lanjut termasuk higher-order function.</p>
   <p class="week-outcome">Mahasiswa mampu mengolah data koleksi dan menulis function yang ringkas serta dapat digunakan ulang.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-04.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-04.html" data-week-cta="4">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="5">
   <div class="week-card-top">
     <span class="week-number">05</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.8 2.2a2 2 0 0 0-1.6 0L2.6 6.1a1 1 0 0 0 0 1.8l8.6 3.9a2 2 0 0 0 1.6 0l8.6-3.9a1 1 0 0 0 0-1.8Z"/><path d="m22 12.2-9.2 4.2a2 2 0 0 1-1.6 0L2 12.2"/><path d="m22 17.2-9.2 4.2a2 2 0 0 1-1.6 0L2 17.2"/></svg></span>
@@ -213,9 +226,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Aplikasi Pertama &amp; Widget Dasar Flutter</h3>
   <p>Membuat project Flutter pertama serta mengenal MaterialApp, Scaffold, widget dasar, dan konsep state sederhana.</p>
   <p class="week-outcome">Mahasiswa mampu membangun aplikasi Flutter satu layar menggunakan widget dasar dan StatefulWidget.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-05.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-05.html" data-week-cta="5">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="6">
   <div class="week-card-top">
     <span class="week-number">06</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></span>
@@ -224,9 +240,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Layout dan Navigasi</h3>
   <p>Menyusun tata letak dengan Row, Column, Stack, list dinamis, serta perpindahan antar halaman dengan Navigator.</p>
   <p class="week-outcome">Mahasiswa mampu membangun layout responsif multi-halaman dan mengirim data antar halaman.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-06.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-06.html" data-week-cta="6">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="7">
   <div class="week-card-top">
     <span class="week-number">07</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.3 9 5.1"/><path d="M21 8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span>
@@ -235,9 +254,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Manajemen Plugin Flutter</h3>
   <p>Mengelola dependency dari pub.dev, memahami pubspec.yaml, serta mengonfigurasi plugin pada project Flutter.</p>
   <p class="week-outcome">Mahasiswa mampu memilih, memasang, dan mengonfigurasi package pihak ketiga secara aman.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-07.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-07.html" data-week-cta="7">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card is-assessment">
+<article class="week-card is-assessment" data-week="8">
   <div class="week-card-top">
     <span class="week-number">08</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span>
@@ -246,9 +268,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Ujian Tengah Semester (UTS)</h3>
   <p>Asesmen tengah semester: merancang dan membangun prototype antarmuka aplikasi mobile berbasis materi Minggu 1&ndash;7.</p>
   <p class="week-outcome">Mahasiswa mampu menerapkan widget, layout, navigasi, dan plugin dalam satu prototype UI yang utuh.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-08.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-08.html" data-week-cta="8">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="9">
   <div class="week-card-top">
     <span class="week-number">09</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
@@ -257,9 +282,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Kamera pada Flutter</h3>
   <p>Mengakses kamera perangkat: permission, camera controller, preview, pengambilan gambar, dan penanganan error.</p>
   <p class="week-outcome">Mahasiswa mampu membangun fitur kamera yang menangani izin, siklus hidup, dan error dengan benar.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-09.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-09.html" data-week-cta="9">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="10">
   <div class="week-card-top">
     <span class="week-number">10</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.7 9.7 0 0 1 6.7 2.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.7 9.7 0 0 1-6.7-2.7L3 16"/><path d="M8 16H3v5"/></svg></span>
@@ -268,9 +296,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Dasar State Management</h3>
   <p>Konsep state, setState, lifting state up, pemisahan state dan UI, hingga pengenalan Provider.</p>
   <p class="week-outcome">Mahasiswa mampu memilih pendekatan pengelolaan state yang sesuai dengan kompleksitas aplikasi.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-10.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-10.html" data-week-cta="10">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="11">
   <div class="week-card-top">
     <span class="week-number">11</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
@@ -279,9 +310,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Pemrograman Asynchronous</h3>
   <p>Perbedaan synchronous dan asynchronous, Future, async/await, FutureBuilder, loading state, dan error handling.</p>
   <p class="week-outcome">Mahasiswa mampu menulis kode asynchronous yang tidak memblokir UI dan menampilkan status proses.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-11.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-11.html" data-week-cta="11">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="12">
   <div class="week-card-top">
     <span class="week-number">12</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
@@ -290,9 +324,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Streams &amp; BLoC Pattern</h3>
   <p>Aliran data dengan Stream, StreamController, StreamBuilder, serta pemisahan logika bisnis dengan pola BLoC.</p>
   <p class="week-outcome">Mahasiswa mampu memisahkan logika bisnis dari UI menggunakan Stream dan pola BLoC sederhana.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-12.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-12.html" data-week-cta="12">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="13">
   <div class="week-card-top">
     <span class="week-number">13</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span>
@@ -301,9 +338,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Persistensi Data</h3>
   <p>Menyimpan data secara lokal: JSON serialization, SharedPreferences, dan operasi CRUD pada SQLite.</p>
   <p class="week-outcome">Mahasiswa mampu menyimpan dan membaca data aplikasi secara offline dengan struktur yang rapi.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-13.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-13.html" data-week-cta="13">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="14">
   <div class="week-card-top">
     <span class="week-number">14</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/><path d="M2 12h20"/></svg></span>
@@ -312,9 +352,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>RESTful API</h3>
   <p>Komunikasi aplikasi dengan server: HTTP, metode REST, status code, parsing JSON, dan penanganan error jaringan.</p>
   <p class="week-outcome">Mahasiswa mampu mengintegrasikan aplikasi Flutter dengan REST API dan menampilkan datanya di UI.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-14.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-14.html" data-week-cta="14">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="15">
   <div class="week-card-top">
     <span class="week-number">15</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
@@ -323,9 +366,12 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Progress Project &ndash; Bagian 1</h3>
   <p>Pengerjaan final project: alur kerja Git, pembagian tugas tim, integrasi UI dengan API dan penyimpanan lokal.</p>
   <p class="week-outcome">Mahasiswa mampu mengelola pengembangan project secara kolaboratif dengan Git dan dokumentasi yang layak.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-15.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-15.html" data-week-cta="15">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
-<article class="week-card">
+<article class="week-card" data-week="16">
   <div class="week-card-top">
     <span class="week-number">16</span>
     <span class="week-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.5 12.9 17 22l-5-3-5 3 1.5-9.1"/></svg></span>
@@ -334,7 +380,10 @@ document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   <h3>Progress Project Bagian 2 &amp; Final Project Expo</h3>
   <p>Penyelesaian, pengujian, optimasi, dokumentasi, serta demonstrasi aplikasi pada Final Project Expo.</p>
   <p class="week-outcome">Mahasiswa mampu merilis aplikasi Flutter yang berfungsi utuh dan mempresentasikannya secara profesional.</p>
-  <a class="btn btn-ghost btn-sm" href="weeks/week-16.html">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+  <a class="btn btn-ghost btn-sm week-cta" href="weeks/week-16.html" data-week-cta="16">
+    <span class="cta-open">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+    <span class="cta-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Segera hadir</span>
+  </a>
 </article>
       </div>
     </div>
