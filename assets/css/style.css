@@ -401,6 +401,56 @@ small { font-size: var(--step--1); }
 .hero-figure { display: grid; place-items: center; }
 .hero-figure svg { width: 100%; max-width: 430px; height: auto; }
 
+/* ---------- Kontrol rilis materi (release.js) ---------------------------- */
+.cta-lock { display: none; align-items: center; gap: .4rem; }
+.cta-lock svg { width: 15px; height: 15px; }
+.lock-mark { display: none; align-items: center; margin-left: auto; }
+.lock-mark svg { width: 14px; height: 14px; }
+.sidebar-list a { position: relative; }
+
+.coming-soon { display: none; }
+[data-locked] .coming-soon {
+  display: block;
+  text-align: center;
+  padding: 3.25rem 1.75rem;
+  margin-top: 2rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--bg-alt);
+}
+[data-locked] .coming-soon-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  color: var(--brand);
+  margin-bottom: 1.15rem;
+}
+[data-locked] .coming-soon-icon svg { width: 26px; height: 26px; }
+[data-locked] .coming-soon h2 { font-size: 1.4rem; margin-bottom: .6rem; }
+[data-locked] .coming-soon p { color: var(--text-muted); max-width: 46ch; margin: 0 auto .5rem; }
+[data-locked] .coming-soon-meta {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  color: var(--text-soft);
+  margin-top: 1rem !important;
+}
+[data-locked] .coming-soon-actions { margin-top: 1.6rem; }
+
+/* Sembunyikan materi asli pada halaman minggu yang belum dirilis. */
+[data-locked] .lesson-content,
+[data-locked] .lesson-header .lead,
+[data-locked] .toc,
+[data-locked] .progress-bar { display: none; }
+@media (min-width: 1181px) {
+  [data-locked] .lesson-layout { grid-template-columns: var(--sidebar-w) minmax(0, 1fr); }
+}
+
+.result-item.is-locked { opacity: .62; cursor: default; }
+.result-item.is-locked:hover { background: transparent; }
+.result-week.is-locked { color: var(--text-soft); }
+
 /* hero illustration */
 .hero-illus .hs-card,
 .hero-illus .hs-tile { fill: var(--surface); stroke: var(--border); stroke-width: 1.4; }
