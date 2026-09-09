@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id" data-base="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minggu 12: Streams &amp; BLoC Pattern | Pemrograman Mobile</title>
+<meta name="description" content="Aliran data dengan Stream, StreamController, StreamBuilder, serta pemisahan logika bisnis dengan pola BLoC.">
+<meta name="author" content="Program Studi Teknik Komputer, Universitas Warmadewa">
+<meta property="og:title" content="Minggu 12: Streams &amp; BLoC Pattern | Pemrograman Mobile">
+<meta property="og:description" content="Aliran data dengan Stream, StreamController, StreamBuilder, serta pemisahan logika bisnis dengan pola BLoC.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script>(function(){try{var t=localStorage.getItem('pm-theme');
+if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body data-page="week-12">
+<a class="skip-link" href="#lesson-content">Lewati ke konten materi</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <button class="icon-btn sidebar-open" type="button" data-sidebar-open aria-expanded="false" aria-controls="materi-sidebar" aria-label="Buka daftar materi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12h-8"/><path d="M21 6h-8"/><path d="M21 18h-8"/><path d="M3 6v4c0 1.1.9 2 2 2h3"/><path d="M3 10v6c0 1.1.9 2 2 2h3"/></svg></button>
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo-TKOM.png" alt="Logo COM Teknik Komputer Universitas Warmadewa">
+      <span class="brand-text">
+        <span class="brand-title">Pemrograman Mobile</span>
+        <span class="brand-sub">Teknik Komputer &middot; Warmadewa</span>
+      </span>
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="Navigasi utama">
+      <ul class="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#materi" aria-current="page">Materi</a></li>
+        <li><a href="../about.html">Tentang</a></li>
+        <li><a href="../about.html#referensi">Referensi</a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-btn" type="button" data-search-open aria-label="Cari materi (tekan garis miring)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Ganti ke tema gelap">
+        <span class="theme-icon-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><span class="theme-icon-light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.3 17.7-1.4 1.4"/><path d="m19.1 4.9-1.4 1.4"/></svg></span>
+      </button>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false"
+        aria-controls="main-nav" aria-label="Buka menu navigasi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
+    </div>
+  </div>
+  <div class="progress-bar" id="progress-bar"></div>
+</header>
+
+<nav class="breadcrumb-bar" aria-label="Breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html#materi">Materi</a></li>
+      <li><span aria-current="page">Minggu 12 &middot; Streams &amp; BLoC</span></li>
+    </ol>
+  </div>
+</nav>
+
+<div class="container lesson-layout">
+<aside class="sidebar" id="materi-sidebar" aria-label="Daftar materi">
+  <button class="icon-btn sidebar-close" type="button" data-sidebar-close aria-label="Tutup daftar materi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+  <p class="sidebar-title">Materi</p>
+  <ul class="sidebar-list">
+    <li><a href="week-01.html"><span class="num">01</span><span>Mobile Development Ecosystem</span></a></li>
+    <li><a href="week-02.html"><span class="num">02</span><span>Dart Fundamental I</span></a></li>
+    <li><a href="week-03.html"><span class="num">03</span><span>Dart Fundamental II</span></a></li>
+    <li><a href="week-04.html"><span class="num">04</span><span>Dart Fundamental III</span></a></li>
+    <li><a href="week-05.html"><span class="num">05</span><span>Flutter Widget</span></a></li>
+    <li><a href="week-06.html"><span class="num">06</span><span>Layout &amp; Navigation</span></a></li>
+    <li><a href="week-07.html"><span class="num">07</span><span>Plugin &amp; Package</span></a></li>
+    <li><a href="week-08.html"><span class="num">08</span><span>UTS</span></a></li>
+    <li><a href="week-09.html"><span class="num">09</span><span>Kamera</span></a></li>
+    <li><a href="week-10.html"><span class="num">10</span><span>State Management</span></a></li>
+    <li><a href="week-11.html"><span class="num">11</span><span>Asynchronous</span></a></li>
+    <li><a href="week-12.html" aria-current="page"><span class="num">12</span><span>Streams &amp; BLoC</span></a></li>
+    <li><a href="week-13.html"><span class="num">13</span><span>Persistensi Data</span></a></li>
+    <li><a href="week-14.html"><span class="num">14</span><span>REST API</span></a></li>
+    <li><a href="week-15.html"><span class="num">15</span><span>Progress Project I</span></a></li>
+    <li><a href="week-16.html"><span class="num">16</span><span>Final Project Expo</span></a></li>
+  </ul>
+  <div class="sidebar-foot">
+    <a class="btn btn-ghost btn-sm" href="../index.html#materi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg> Semua materi</a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" data-sidebar-close></div>
+
+  <main id="lesson-main">
+    <header class="lesson-header">
+      <div class="lesson-kicker">
+        <span class="week-tag">MINGGU 12</span>
+        <span class="meta">Materi perkuliahan</span>
+      </div>
+      <h1>Streams &amp; BLoC Pattern</h1>
+      <p class="lead">Bila Future memberi satu nilai, Stream memberi rangkaian nilai yang mengalir dari waktu ke waktu. Konsep ini menjadi dasar pola BLoC yang memisahkan logika bisnis dari antarmuka.</p>
+    </header>
+
+    <div id="lesson-content" class="lesson-content">
+      <section class="objectives">
+        <h2 data-no-toc>Tujuan pembelajaran</h2>
+        <ul><li>Membedakan Future dan Stream serta memilih yang sesuai.</li><li>Membuat Stream dengan generator <code>async*</code> dan StreamController.</li><li>Menampilkan data Stream dengan StreamBuilder.</li><li>Menjelaskan alur event dan state pada pola BLoC.</li><li>Membangun BLoC sederhana tanpa bergantung pada pustaka eksternal.</li></ul>
+      </section>
+
+<h2>Future dan Stream</h2>
+<div class="table-wrap"><table><thead><tr><th>Aspek</th><th>Future</th><th>Stream</th></tr></thead><tbody><tr><td>Jumlah nilai</td><td>Satu</td><td>Nol sampai tak terbatas</td></tr><tr><td>Analogi</td><td>Memesan satu paket kiriman</td><td>Berlangganan surat kabar harian</td></tr><tr><td>Menunggu</td><td><code>await</code></td><td><code>await for</code> atau <code>listen</code></td></tr><tr><td>Widget</td><td><code>FutureBuilder</code></td><td><code>StreamBuilder</code></td></tr><tr><td>Contoh</td><td>Sekali panggil API</td><td>Lokasi berkala, hasil pencarian langsung, notifikasi</td></tr></tbody></table></div>
+<h2>Membuat Stream</h2>
+<div class="code-block"><div class="code-head"><span class="code-file">dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">// Generator stream dengan async*
+Stream&lt;int&gt; hitungMundur(int dari) async* {
+  for (int i = dari; i &gt;= 0; i--) {
+    await Future.delayed(const Duration(seconds: 1));
+    yield i;      // mengirim satu nilai ke pendengar
+  }
+}
+
+// Konsumsi dengan await for
+Future&lt;void&gt; jalankan() async {
+  await for (final detik in hitungMundur(5)) {
+    print(&#x27;Sisa: $detik detik&#x27;);
+  }
+  print(&#x27;Waktu habis&#x27;);
+}
+
+// Konsumsi dengan listen
+final langganan = hitungMundur(5).listen(
+  (nilai) =&gt; print(&#x27;Nilai: $nilai&#x27;),
+  onError: (e) =&gt; print(&#x27;Error: $e&#x27;),
+  onDone: () =&gt; print(&#x27;Selesai&#x27;),
+);
+
+// Wajib dibatalkan agar tidak bocor
+await langganan.cancel();</code></pre></div>
+<h3>StreamController</h3>
+<div class="code-block"><div class="code-head"><span class="code-file">dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">import &#x27;dart:async&#x27;;
+
+class PencarianService {
+  final _controller = StreamController&lt;String&gt;.broadcast();
+
+  Stream&lt;String&gt; get hasil =&gt; _controller.stream;
+
+  void cari(String kataKunci) {
+    if (kataKunci.isEmpty) {
+      _controller.sink.add(&#x27;Ketik kata kunci untuk mulai mencari&#x27;);
+      return;
+    }
+    _controller.sink.add(&#x27;Menampilkan hasil untuk &quot;$kataKunci&quot;&#x27;);
+  }
+
+  void dispose() {
+    _controller.close();   // wajib dipanggil
+  }
+}</code></pre></div><div class="callout tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.1 14c.6-1 1.4-1.7 2.1-2.6a6 6 0 1 0-10.4 0c.7.9 1.5 1.6 2.1 2.6"/></svg><div><p>Gunakan <code>StreamController.broadcast()</code> bila stream perlu didengarkan lebih dari satu widget. Controller biasa hanya menerima satu pendengar dan akan melempar error pada pendengar kedua.</p></div></div>
+<h3>StreamBuilder</h3>
+<div class="code-block"><div class="code-head"><span class="code-file">dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">StreamBuilder&lt;int&gt;(
+  stream: hitungMundur(10),
+  initialData: 10,
+  builder: (context, snapshot) {
+    if (snapshot.hasError) {
+      return Text(&#x27;Terjadi kesalahan: ${snapshot.error}&#x27;);
+    }
+    if (snapshot.connectionState == ConnectionState.done) {
+      return const Text(&#x27;Waktu habis&#x27;);
+    }
+    return Text(
+      &#x27;${snapshot.data}&#x27;,
+      style: Theme.of(context).textTheme.displayLarge,
+    );
+  },
+)</code></pre></div>
+<h2>Pola BLoC</h2>
+<p>BLoC adalah singkatan dari Business Logic Component. Idenya sederhana: antarmuka hanya mengirim
+event dan menampilkan state, sedangkan seluruh logika berada di lapisan terpisah yang dapat diuji
+tanpa perlu menjalankan aplikasi.</p>
+<div class="code-block"><div class="code-head"><span class="code-file">alur-bloc.txt</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">Widget  --event--&gt;  BLoC  --state--&gt;  Widget
+                     |
+              logika bisnis, validasi,
+              pemanggilan repository</code></pre></div>
+<h3>BLoC sederhana tanpa pustaka tambahan</h3>
+<div class="code-block"><div class="code-head"><span class="code-file">lib/bloc/keranjang_bloc.dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">import &#x27;dart:async&#x27;;
+
+// Event
+sealed class KeranjangEvent {}
+class TambahItem extends KeranjangEvent {
+  final String nama;
+  TambahItem(this.nama);
+}
+class HapusItem extends KeranjangEvent {
+  final String nama;
+  HapusItem(this.nama);
+}
+
+// State
+class KeranjangState {
+  final List&lt;String&gt; item;
+  final int total;
+  const KeranjangState({this.item = const [], this.total = 0});
+}
+
+// BLoC
+class KeranjangBloc {
+  final _item = &lt;String&gt;[];
+  final _stateController = StreamController&lt;KeranjangState&gt;.broadcast();
+  final _eventController = StreamController&lt;KeranjangEvent&gt;();
+
+  Stream&lt;KeranjangState&gt; get state =&gt; _stateController.stream;
+  Sink&lt;KeranjangEvent&gt; get event =&gt; _eventController.sink;
+
+  KeranjangBloc() {
+    _eventController.stream.listen(_prosesEvent);
+  }
+
+  void _prosesEvent(KeranjangEvent e) {
+    switch (e) {
+      case TambahItem():
+        _item.add(e.nama);
+      case HapusItem():
+        _item.remove(e.nama);
+    }
+    _stateController.sink.add(
+      KeranjangState(item: List.of(_item), total: _item.length),
+    );
+  }
+
+  void dispose() {
+    _eventController.close();
+    _stateController.close();
+  }
+}</code></pre></div><div class="code-block"><div class="code-head"><span class="code-file">dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">class HalamanKeranjang extends StatefulWidget {
+  const HalamanKeranjang({super.key});
+
+  @override
+  State&lt;HalamanKeranjang&gt; createState() =&gt; _HalamanKeranjangState();
+}
+
+class _HalamanKeranjangState extends State&lt;HalamanKeranjang&gt; {
+  final _bloc = KeranjangBloc();
+
+  @override
+  void dispose() {
+    _bloc.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text(&#x27;Keranjang&#x27;)),
+      body: StreamBuilder&lt;KeranjangState&gt;(
+        stream: _bloc.state,
+        initialData: const KeranjangState(),
+        builder: (context, snapshot) {
+          final state = snapshot.data!;
+          return ListView(
+            children: [
+              for (final nama in state.item)
+                ListTile(
+                  title: Text(nama),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete_outline),
+                    onPressed: () =&gt; _bloc.event.add(HapusItem(nama)),
+                  ),
+                ),
+              ListTile(title: Text(&#x27;Total item: ${state.total}&#x27;)),
+            ],
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =&gt; _bloc.event.add(TambahItem(&#x27;Item baru&#x27;)),
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}</code></pre></div><div class="table-wrap"><table><thead><tr><th>Pendekatan</th><th>Kompleksitas</th><th>Cocok untuk</th></tr></thead><tbody><tr><td><code>setState</code></td><td>Rendah</td><td>State lokal satu widget</td></tr><tr><td>Provider</td><td>Sedang</td><td>Sebagian besar aplikasi kuliah dan aplikasi kecil</td></tr><tr><td>BLoC</td><td>Tinggi</td><td>Aplikasi besar, tim banyak orang, kebutuhan pengujian ketat</td></tr></tbody></table></div><div class="callout note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><p>Untuk project akhir mata kuliah ini, Provider umumnya sudah memadai. Pahami BLoC sebagai pola pikir pemisahan logika dan tampilan, yang akan Anda temui lagi di dunia kerja.</p></div></div>
+<h2>Praktikum</h2>
+<details class="collapse" open><summary>Praktikum 1 &mdash; Penghitung mundur</summary><div class="collapse-body"><ul><li>Buat stream hitung mundur dari 30 detik.</li><li>Tampilkan dengan <code>StreamBuilder</code> beserta indikator lingkaran.</li><li>Ubah warna teks menjadi merah pada sepuluh detik terakhir.</li></ul></div></details><details class="collapse"><summary>Praktikum 2 &mdash; Pencarian langsung</summary><div class="collapse-body"><ul><li>Buat StreamController yang menerima kata kunci dari TextField.</li><li>Saring daftar data sesuai kata kunci dan tampilkan hasilnya secara langsung.</li><li>Tambahkan jeda 300 milidetik agar penyaringan tidak berjalan pada setiap ketukan.</li></ul></div></details><details class="collapse"><summary>Praktikum 3 &mdash; BLoC keranjang</summary><div class="collapse-body"><ul><li>Terapkan kode BLoC di atas pada project Anda.</li><li>Tambahkan event untuk mengubah jumlah item.</li><li>Pastikan seluruh controller ditutup pada <code>dispose</code>.</li></ul></div></details>
+<h2>Tugas</h2>
+<div class="panel panel-accent">
+  <h3>Refactor ke arsitektur berlapis</h3>
+  <p>Ambil salah satu fitur dari aplikasi UTS Anda, lalu pisahkan menjadi tiga lapisan: widget yang
+  hanya menampilkan, BLoC yang memproses event menjadi state, dan repository yang menyediakan data.
+  Sertakan diagram alur event dan state pada dokumentasi.</p>
+</div>
+
+<h2>Checklist</h2>
+<ul class="checklist"><li><label><input type="checkbox" id="chk-0"><span>Memahami perbedaan Future dan Stream</span></label></li><li><label><input type="checkbox" id="chk-1"><span>Stream dibuat dengan async* dan StreamController</span></label></li><li><label><input type="checkbox" id="chk-2"><span>StreamBuilder menampilkan data yang mengalir</span></label></li><li><label><input type="checkbox" id="chk-3"><span>Seluruh controller dan langganan ditutup</span></label></li><li><label><input type="checkbox" id="chk-4"><span>BLoC sederhana berjalan dengan alur event dan state</span></label></li><li><label><input type="checkbox" id="chk-5"><span>Tugas refactor selesai beserta diagramnya</span></label></li></ul>
+<h2>Refleksi</h2>
+<div class="panel reflection"><p>Tulis jawaban singkat Anda. Catatan tersimpan otomatis di browser ini.</p><p><strong>Setelah memisahkan logika ke BLoC, bagian mana dari kode Anda yang menjadi lebih mudah diuji?</strong></p><textarea data-persist-note rows="3" aria-label="Setelah memisahkan logika ke BLoC, bagian mana dari kode Anda yang menjadi lebih mudah diuji?"></textarea></div>
+<h2>Referensi</h2>
+<ul><li><a href="https://dart.dev/libraries/async/using-streams" target="_blank" rel="noopener">Dart &mdash; Streams</a></li><li><a href="https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html" target="_blank" rel="noopener">Flutter &mdash; StreamBuilder</a></li><li><a href="https://pub.dev/packages/flutter_bloc" target="_blank" rel="noopener">Package flutter_bloc</a></li><li><a href="https://jti-polinema.github.io/flutter-codelab/12-state-streams-bloc/" target="_blank" rel="noopener">Codelab JTI Polinema &mdash; State, streams, BLoC</a></li></ul>
+    </div>
+
+    <nav class="lesson-nav" aria-label="Navigasi antar materi">
+      <a class="nav-card prev" href="week-11.html"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg> Minggu sebelumnya</span><strong>11 &middot; Asynchronous</strong></a>
+      <a class="btn btn-ghost" href="../index.html#materi">Daftar materi</a>
+      <a class="nav-card next" href="week-13.html"><span>Minggu berikutnya <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span><strong>13 &middot; Persistensi Data</strong></a>
+    </nav>
+  </main>
+
+  <nav class="toc" aria-label="Daftar isi halaman">
+    <p class="toc-title">Di halaman ini</p>
+    <ul id="toc-list"></ul>
+  </nav>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/img/logo-TKOM.png" alt="Logo COM">
+          <span><strong>COM</strong><span>Computer Engineering</span></span>
+        </div>
+        <p>Modul pembelajaran Pemrograman Mobile untuk mahasiswa S1 Teknik Komputer.
+        Materi disusun dalam 16 minggu perkuliahan, dari dasar Dart sampai final project Flutter.</p>
+      </div>
+      <div>
+        <h4>Navigasi</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#materi">Daftar materi</a></li>
+          <li><a href="../about.html">Tentang mata kuliah</a></li>
+          <li><a href="../about.html#referensi">Referensi</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Program Studi</h4>
+        <p>Program Studi Teknik Komputer<br>
+        Fakultas Teknik dan Perencanaan<br>
+        Universitas Warmadewa<br>
+        Denpasar, Bali</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 COM &ndash; Computer Engineering, Universitas Warmadewa</span>
+      <span>Dibangun sebagai website statis, dapat diakses luring setelah halaman dimuat.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true"
+  aria-label="Pencarian materi" aria-hidden="true">
+  <div class="search-panel">
+    <div class="search-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" id="search-input" placeholder="Cari materi&hellip;" autocomplete="off"
+        aria-label="Kata kunci pencarian" aria-describedby="search-empty">
+      <button class="search-hint" type="button" data-search-close>Esc</button>
+    </div>
+    <ul class="search-results" id="search-results"></ul>
+    <p class="search-empty" id="search-empty" hidden></p>
+  </div>
+</div>
+
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas halaman"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></button>
+<script src="../assets/js/modules.js"></script>
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>

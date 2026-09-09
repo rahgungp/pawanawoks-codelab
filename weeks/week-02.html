@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id" data-base="../">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minggu 02: Pemrograman Dasar Dart - Bagian 1 | Pemrograman Mobile</title>
+<meta name="description" content="Karakteristik bahasa Dart, Dart SDK, kompilasi JIT dan AOT, variabel, tipe data, operator, serta null safety.">
+<meta name="author" content="Program Studi Teknik Komputer, Universitas Warmadewa">
+<meta property="og:title" content="Minggu 02: Pemrograman Dasar Dart - Bagian 1 | Pemrograman Mobile">
+<meta property="og:description" content="Karakteristik bahasa Dart, Dart SDK, kompilasi JIT dan AOT, variabel, tipe data, operator, serta null safety.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/img/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script>(function(){try{var t=localStorage.getItem('pm-theme');
+if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body data-page="week-02">
+<a class="skip-link" href="#lesson-content">Lewati ke konten materi</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <button class="icon-btn sidebar-open" type="button" data-sidebar-open aria-expanded="false" aria-controls="materi-sidebar" aria-label="Buka daftar materi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12h-8"/><path d="M21 6h-8"/><path d="M21 18h-8"/><path d="M3 6v4c0 1.1.9 2 2 2h3"/><path d="M3 10v6c0 1.1.9 2 2 2h3"/></svg></button>
+    <a class="brand" href="../index.html">
+      <img src="../assets/img/logo-TKOM.png" alt="Logo COM Teknik Komputer Universitas Warmadewa">
+      <span class="brand-text">
+        <span class="brand-title">Pemrograman Mobile</span>
+        <span class="brand-sub">Teknik Komputer &middot; Warmadewa</span>
+      </span>
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="Navigasi utama">
+      <ul class="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../index.html#materi" aria-current="page">Materi</a></li>
+        <li><a href="../about.html">Tentang</a></li>
+        <li><a href="../about.html#referensi">Referensi</a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-btn" type="button" data-search-open aria-label="Cari materi (tekan garis miring)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" aria-label="Ganti ke tema gelap">
+        <span class="theme-icon-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span><span class="theme-icon-light"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.3 17.7-1.4 1.4"/><path d="m19.1 4.9-1.4 1.4"/></svg></span>
+      </button>
+      <button class="icon-btn nav-toggle" type="button" data-nav-toggle aria-expanded="false"
+        aria-controls="main-nav" aria-label="Buka menu navigasi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
+    </div>
+  </div>
+  <div class="progress-bar" id="progress-bar"></div>
+</header>
+
+<nav class="breadcrumb-bar" aria-label="Breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html#materi">Materi</a></li>
+      <li><span aria-current="page">Minggu 02 &middot; Dart Fundamental I</span></li>
+    </ol>
+  </div>
+</nav>
+
+<div class="container lesson-layout">
+<aside class="sidebar" id="materi-sidebar" aria-label="Daftar materi">
+  <button class="icon-btn sidebar-close" type="button" data-sidebar-close aria-label="Tutup daftar materi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+  <p class="sidebar-title">Materi</p>
+  <ul class="sidebar-list">
+    <li><a href="week-01.html"><span class="num">01</span><span>Mobile Development Ecosystem</span></a></li>
+    <li><a href="week-02.html" aria-current="page"><span class="num">02</span><span>Dart Fundamental I</span></a></li>
+    <li><a href="week-03.html"><span class="num">03</span><span>Dart Fundamental II</span></a></li>
+    <li><a href="week-04.html"><span class="num">04</span><span>Dart Fundamental III</span></a></li>
+    <li><a href="week-05.html"><span class="num">05</span><span>Flutter Widget</span></a></li>
+    <li><a href="week-06.html"><span class="num">06</span><span>Layout &amp; Navigation</span></a></li>
+    <li><a href="week-07.html"><span class="num">07</span><span>Plugin &amp; Package</span></a></li>
+    <li><a href="week-08.html"><span class="num">08</span><span>UTS</span></a></li>
+    <li><a href="week-09.html"><span class="num">09</span><span>Kamera</span></a></li>
+    <li><a href="week-10.html"><span class="num">10</span><span>State Management</span></a></li>
+    <li><a href="week-11.html"><span class="num">11</span><span>Asynchronous</span></a></li>
+    <li><a href="week-12.html"><span class="num">12</span><span>Streams &amp; BLoC</span></a></li>
+    <li><a href="week-13.html"><span class="num">13</span><span>Persistensi Data</span></a></li>
+    <li><a href="week-14.html"><span class="num">14</span><span>REST API</span></a></li>
+    <li><a href="week-15.html"><span class="num">15</span><span>Progress Project I</span></a></li>
+    <li><a href="week-16.html"><span class="num">16</span><span>Final Project Expo</span></a></li>
+  </ul>
+  <div class="sidebar-foot">
+    <a class="btn btn-ghost btn-sm" href="../index.html#materi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg> Semua materi</a>
+  </div>
+</aside>
+<div class="sidebar-backdrop" data-sidebar-close></div>
+
+  <main id="lesson-main">
+    <header class="lesson-header">
+      <div class="lesson-kicker">
+        <span class="week-tag">MINGGU 02</span>
+        <span class="meta">Materi perkuliahan</span>
+      </div>
+      <h1>Pemrograman Dasar Dart &ndash; Bagian 1</h1>
+      <p class="lead">Dart adalah fondasi setiap aplikasi Flutter. Pertemuan ini membedah karakteristik bahasa, cara Dart dikompilasi, serta elemen dasar sintaks yang akan Anda pakai di semua pertemuan berikutnya.</p>
+    </header>
+
+    <div id="lesson-content" class="lesson-content">
+      <section class="objectives">
+        <h2 data-no-toc>Tujuan pembelajaran</h2>
+        <ul><li>Menjelaskan sejarah dan karakteristik bahasa Dart.</li><li>Membedakan kompilasi JIT dan AOT serta kaitannya dengan hot reload.</li><li>Menggunakan variabel, tipe data, dan operator Dart dengan tepat.</li><li>Menerapkan null safety termasuk penggunaan <code>late</code>.</li><li>Membuat class, objek, konstruktor, dan method sederhana.</li><li>Menjalankan dan menguji kode Dart melalui DartPad.</li></ul>
+      </section>
+
+<h2>Sekilas tentang Dart</h2>
+<p>Dart dirilis Google pada 2011 sebagai bahasa untuk aplikasi web berskala besar, lalu menemukan
+peran utamanya sejak Flutter menjadikannya bahasa resmi. Dart dirancang agar familier bagi
+pemrogram Java, C#, atau JavaScript, sekaligus mendukung kebutuhan khusus antarmuka: waktu muat
+cepat, animasi mulus, dan siklus pengembangan yang singkat.</p>
+<ul class="pills"><li>Object oriented</li><li>Statically typed</li><li>Null safe</li><li>Garbage collected</li><li>JIT + AOT</li><li>Multi-platform</li></ul>
+<h3>Dart SDK dan Dart VM</h3>
+<p>Dart SDK berisi compiler, formatter, analyzer, package manager, dan Dart VM. Semua tersedia
+otomatis ketika Anda memasang Flutter SDK, jadi tidak perlu instalasi terpisah.</p>
+<div class="table-wrap"><table><thead><tr><th>Mode</th><th>Kepanjangan</th><th>Dipakai saat</th><th>Keuntungan</th></tr></thead><tbody><tr><td>JIT</td><td>Just-in-Time</td><td>Pengembangan (<code>flutter run</code>)</td><td>Kompilasi saat berjalan sehingga hot reload dimungkinkan</td></tr><tr><td>AOT</td><td>Ahead-of-Time</td><td>Rilis (<code>flutter build</code>)</td><td>Kode mesin native, waktu mulai cepat, performa stabil</td></tr></tbody></table></div><div class="callout note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><p>Hot reload hanya bekerja pada mode debug karena bergantung pada kompilasi JIT. Karena itu aplikasi rilis tidak bisa diubah secara langsung saat berjalan.</p></div></div>
+<h2>Sintaks dasar</h2>
+<h3>Titik masuk program</h3>
+<div class="code-block"><div class="code-head"><span class="code-file">dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">void main() {
+  print(&#x27;Pemrograman Mobile - Teknik Komputer&#x27;);
+}</code></pre></div>
+<h3>Variabel</h3>
+<div class="code-block"><div class="code-head"><span class="code-file">dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">// Tipe eksplisit
+String nama = &#x27;Universitas Warmadewa&#x27;;
+int tahun = 2026;
+
+// Tipe disimpulkan oleh compiler
+var kota = &#x27;Denpasar&#x27;;        // String
+var jumlahSks = 3;            // int
+
+// Tidak dapat diubah setelah diisi
+final tanggalDaftar = DateTime.now(); // nilai ditentukan saat runtime
+const pi = 3.14159;                   // nilai ditentukan saat kompilasi
+
+// Deklarasi tanpa nilai awal
+late String kodeMataKuliah;
+kodeMataKuliah = &#x27;TKO-4021&#x27;;</code></pre></div><div class="table-wrap"><table><thead><tr><th>Kata kunci</th><th>Nilai ditentukan</th><th>Bisa diubah</th><th>Contoh penggunaan</th></tr></thead><tbody><tr><td><code>var</code></td><td>Saat runtime</td><td>Ya</td><td>Variabel biasa yang tipenya disimpulkan</td></tr><tr><td><code>final</code></td><td>Saat runtime</td><td>Tidak</td><td>Hasil perhitungan yang tidak berubah lagi</td></tr><tr><td><code>const</code></td><td>Saat kompilasi</td><td>Tidak</td><td>Konstanta seperti warna, ukuran, teks tetap</td></tr><tr><td><code>late</code></td><td>Ditunda</td><td>Tergantung deklarasi</td><td>Nilai baru tersedia setelah inisialisasi</td></tr></tbody></table></div>
+<h3>Tipe data</h3>
+<div class="code-block"><div class="code-head"><span class="code-file">dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">int umur = 20;
+double nilai = 87.5;
+num angka = 10;              // induk dari int dan double
+String nim = &#x27;24081010&#x27;;
+bool lulus = true;
+List&lt;String&gt; matkul = [&#x27;Mobile&#x27;, &#x27;Jaringan&#x27;, &#x27;Basis Data&#x27;];
+Map&lt;String, int&gt; nilaiAkhir = {&#x27;Mobile&#x27;: 90, &#x27;Jaringan&#x27;: 85};
+Set&lt;String&gt; tools = {&#x27;Flutter&#x27;, &#x27;Dart&#x27;, &#x27;Git&#x27;};
+
+// Interpolasi string
+print(&#x27;Mahasiswa $nim berumur $umur tahun&#x27;);
+print(&#x27;Rata-rata: ${(90 + 85) / 2}&#x27;);</code></pre></div>
+<h3>Operator</h3>
+<div class="table-wrap"><table><thead><tr><th>Kelompok</th><th>Operator</th><th>Catatan</th></tr></thead><tbody><tr><td>Aritmatika</td><td><code>+ - * / ~/ %</code></td><td><code>~/</code> menghasilkan pembagian bilangan bulat</td></tr><tr><td>Perbandingan</td><td><code>== != &gt; &lt; &gt;= &lt;=</code></td><td>Membandingkan nilai</td></tr><tr><td>Logika</td><td><code>&amp;&amp; || !</code></td><td>Menggabungkan kondisi boolean</td></tr><tr><td>Null-aware</td><td><code>?? ??= ?.</code></td><td>Menangani nilai yang mungkin null</td></tr><tr><td>Penugasan</td><td><code>= += -= *= /=</code></td><td>Memberi dan memperbarui nilai</td></tr></tbody></table></div><div class="code-block"><div class="code-head"><span class="code-file">dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">String? nickname;
+String tampil = nickname ?? &#x27;Tanpa nama&#x27;;   // pakai nilai cadangan bila null
+nickname ??= &#x27;anonim&#x27;;                      // isi hanya bila masih null
+int? panjang = nickname?.length;            // akses aman, hasil boleh null</code></pre></div>
+<h2>Null safety</h2>
+<p>Sejak Dart 2.12, setiap tipe tidak menerima null kecuali Anda menuliskannya secara eksplisit.
+Aturan ini memindahkan sebagian besar kesalahan null dari runtime ke waktu kompilasi.</p>
+<div class="code-block"><div class="code-head"><span class="code-file">dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">String pasti = &#x27;selalu ada&#x27;;
+String? mungkinKosong;              // boleh null
+
+void cetakPanjang(String? teks) {
+  if (teks == null) {
+    print(&#x27;Tidak ada teks&#x27;);
+    return;
+  }
+  // Setelah pengecekan, Dart tahu teks pasti bukan null
+  print(&#x27;Panjang: ${teks.length}&#x27;);
+}
+
+// Operator ! memaksa nilai dianggap tidak null - gunakan seperlunya
+String hasil = mungkinKosong!;      // error saat runtime bila benar-benar null</code></pre></div><div class="callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><span class="callout-title">Hati-hati dengan tanda seru</span><p>Operator <code>!</code> mematikan pemeriksaan compiler. Setiap kali Anda memakainya, Anda berjanji nilai itu pasti terisi. Bila ragu, gunakan pengecekan <code>if</code> atau operator <code>??</code>.</p></div></div>
+<h2>Dasar pemrograman berorientasi objek</h2>
+<div class="code-block"><div class="code-head"><span class="code-file">dart</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button></div><pre><code class="language-dart">class MataKuliah {
+  final String kode;
+  final String nama;
+  int sks;
+
+  MataKuliah({required this.kode, required this.nama, this.sks = 3});
+
+  // Named constructor
+  MataKuliah.wajib(this.kode, this.nama) : sks = 4;
+
+  // Getter
+  String get label =&gt; &#x27;$kode - $nama ($sks SKS)&#x27;;
+
+  // Method
+  bool lebihBeratDari(MataKuliah lain) =&gt; sks &gt; lain.sks;
+
+  @override
+  String toString() =&gt; label;
+}
+
+void main() {
+  final mobile = MataKuliah(kode: &#x27;TKO-4021&#x27;, nama: &#x27;Pemrograman Mobile&#x27;);
+  final skripsi = MataKuliah.wajib(&#x27;TKO-4099&#x27;, &#x27;Tugas Akhir&#x27;);
+
+  print(mobile);
+  print(skripsi.lebihBeratDari(mobile)); // true
+}</code></pre></div>
+<h2>Praktikum</h2>
+<details class="collapse" open><summary>Praktikum 1 &mdash; Kalkulator IPK di DartPad</summary><div class="collapse-body"><ul><li>Buka <a href="https://dartpad.dev" target="_blank" rel="noopener">dartpad.dev</a>.</li><li>Buat variabel untuk tiga mata kuliah beserta SKS dan nilai angka.</li><li>Hitung indeks prestasi dengan rumus rata-rata berbobot SKS.</li><li>Tampilkan hasil dengan dua angka di belakang koma menggunakan <code>toStringAsFixed(2)</code>.</li></ul></div></details><details class="collapse"><summary>Praktikum 2 &mdash; Class Mahasiswa</summary><div class="collapse-body"><ul><li>Buat class <code>Mahasiswa</code> dengan properti nim, nama, prodi, dan email opsional.</li><li>Tambahkan getter <code>identitas</code> yang menggabungkan nim dan nama.</li><li>Tambahkan method <code>kirimEmail()</code> yang menangani kondisi email bernilai null.</li><li>Buat tiga objek dan tampilkan datanya.</li></ul></div></details>
+<h2>Tugas</h2>
+<div class="panel panel-accent">
+  <h3>Latihan Dart mandiri</h3>
+  <ul><li>Tulis program konversi suhu Celsius ke Fahrenheit dan Kelvin dengan function terpisah.</li><li>Buat class <code>Produk</code> dengan properti nama, harga, dan diskon opsional, lalu hitung harga akhir.</li><li>Demonstrasikan penggunaan <code>var</code>, <code>final</code>, <code>const</code>, dan <code>late</code> dalam satu berkas, sertakan komentar alasan pemilihannya.</li></ul>
+  <p>Kumpulkan sebagai berkas <code>.dart</code> di repository GitHub Anda pada folder
+  <code>latihan/minggu-02/</code>.</p>
+</div>
+
+<h2>Checklist</h2>
+<ul class="checklist"><li><label><input type="checkbox" id="chk-0"><span>Bisa menjelaskan perbedaan JIT dan AOT</span></label></li><li><label><input type="checkbox" id="chk-1"><span>Memahami kapan memakai var, final, const, dan late</span></label></li><li><label><input type="checkbox" id="chk-2"><span>Menerapkan operator null-aware tanpa memakai <code>!</code> sembarangan</span></label></li><li><label><input type="checkbox" id="chk-3"><span>Membuat class dengan konstruktor bernama dan getter</span></label></li><li><label><input type="checkbox" id="chk-4"><span>Semua latihan berjalan tanpa error di DartPad</span></label></li></ul>
+<h2>Refleksi</h2>
+<div class="panel reflection"><p>Tulis jawaban singkat Anda. Catatan tersimpan otomatis di browser ini.</p><p><strong>Bagian mana dari null safety yang paling membingungkan, dan contoh kode apa yang membantu Anda memahaminya?</strong></p><textarea data-persist-note rows="3" aria-label="Bagian mana dari null safety yang paling membingungkan, dan contoh kode apa yang membantu Anda memahaminya?"></textarea></div>
+<h2>Referensi</h2>
+<ul><li><a href="https://dart.dev/language" target="_blank" rel="noopener">Dart &mdash; Language tour</a></li><li><a href="https://dart.dev/null-safety" target="_blank" rel="noopener">Dart &mdash; Sound null safety</a></li><li><a href="https://dartpad.dev/" target="_blank" rel="noopener">DartPad</a></li><li><a href="https://jti-polinema.github.io/flutter-codelab/02-pengantar-bahasa-pemrograman-dart-bag-1/" target="_blank" rel="noopener">Codelab JTI Polinema &mdash; Dart bagian 1</a></li></ul>
+    </div>
+
+    <nav class="lesson-nav" aria-label="Navigasi antar materi">
+      <a class="nav-card prev" href="week-01.html"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg> Minggu sebelumnya</span><strong>01 &middot; Mobile Development Ecosystem</strong></a>
+      <a class="btn btn-ghost" href="../index.html#materi">Daftar materi</a>
+      <a class="nav-card next" href="week-03.html"><span>Minggu berikutnya <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span><strong>03 &middot; Dart Fundamental II</strong></a>
+    </nav>
+  </main>
+
+  <nav class="toc" aria-label="Daftar isi halaman">
+    <p class="toc-title">Di halaman ini</p>
+    <ul id="toc-list"></ul>
+  </nav>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/img/logo-TKOM.png" alt="Logo COM">
+          <span><strong>COM</strong><span>Computer Engineering</span></span>
+        </div>
+        <p>Modul pembelajaran Pemrograman Mobile untuk mahasiswa S1 Teknik Komputer.
+        Materi disusun dalam 16 minggu perkuliahan, dari dasar Dart sampai final project Flutter.</p>
+      </div>
+      <div>
+        <h4>Navigasi</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#materi">Daftar materi</a></li>
+          <li><a href="../about.html">Tentang mata kuliah</a></li>
+          <li><a href="../about.html#referensi">Referensi</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Program Studi</h4>
+        <p>Program Studi Teknik Komputer<br>
+        Fakultas Teknik dan Perencanaan<br>
+        Universitas Warmadewa<br>
+        Denpasar, Bali</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 COM &ndash; Computer Engineering, Universitas Warmadewa</span>
+      <span>Dibangun sebagai website statis, dapat diakses luring setelah halaman dimuat.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true"
+  aria-label="Pencarian materi" aria-hidden="true">
+  <div class="search-panel">
+    <div class="search-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" id="search-input" placeholder="Cari materi&hellip;" autocomplete="off"
+        aria-label="Kata kunci pencarian" aria-describedby="search-empty">
+      <button class="search-hint" type="button" data-search-close>Esc</button>
+    </div>
+    <ul class="search-results" id="search-results"></ul>
+    <p class="search-empty" id="search-empty" hidden></p>
+  </div>
+</div>
+
+<button class="to-top" id="to-top" type="button" aria-label="Kembali ke atas halaman"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></button>
+<script src="../assets/js/modules.js"></script>
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>
