@@ -181,9 +181,19 @@
           .map(function (o) { return o.m; });
       }
 
+      var terkunci = window.LOCKED_WEEKS || [];
+
       results.innerHTML = items.map(function (m) {
-        return '<li><a class="result-item" href="' + BASE + m.url + '">' +
-          '<span class="result-week">MINGGU ' + ("0" + m.week).slice(-2) + "</span>" +
+        var locked = terkunci.indexOf(m.week) > -1;
+        var tag = locked
+          ? '<span class="result-week is-locked">MINGGU ' + ("0" + m.week).slice(-2) +
+            " &middot; segera hadir</span>"
+          : '<span class="result-week">MINGGU ' + ("0" + m.week).slice(-2) + "</span>";
+        var attr = locked
+          ? ' href="' + BASE + m.url + '" aria-disabled="true" data-locked-result="1"'
+          : ' href="' + BASE + m.url + '"';
+        return '<li><a class="result-item' + (locked ? " is-locked" : "") + '"' + attr + ">" +
+          tag +
           '<span class="result-title">' + highlightMatch(m.title, query) + "</span>" +
           '<span class="result-desc">' + highlightMatch(m.desc, query) + "</span>" +
           "</a></li>";
@@ -215,7 +225,17 @@
       }
     });
 
+    results.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest("[data-locked-result]") : null;
+      if (a) e.preventDefault();
+    });
+
     results.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" && document.activeElement &&
+          document.activeElement.hasAttribute("data-locked-result")) {
+        e.preventDefault();
+        return;
+      }
       var items = $$(".result-item", results);
       var idx = items.indexOf(document.activeElement);
       if (e.key === "ArrowDown") { e.preventDefault(); (items[idx + 1] || items[0]).focus(); }
@@ -483,6 +503,28 @@
     });
   }
 
+  /* ---------- 8b. Kunci materi yang belum dirilis -------------------------- */
+  function initReleaseGate() {
+    var locked = window.LOCKED_WEEKS || [];
+    if (!locked.length) return;
+
+    // Tautan kartu, sidebar, dan navigasi bawah dilepas dari urutan tab
+    // supaya pengguna keyboard dan pembaca layar tidak masuk ke halaman kosong.
+    $$("[data-week-link], [data-week-cta]").forEach(function (a) {
+      var n = parseInt(a.getAttribute("data-week-link") || a.getAttribute("data-week-cta"), 10);
+      if (locked.indexOf(n) === -1) return;
+      a.setAttribute("aria-disabled", "true");
+      a.setAttribute("tabindex", "-1");
+      a.setAttribute("title", "Materi Minggu " + ("0" + n).slice(-2) + " belum dibuka");
+      a.addEventListener("click", function (e) { e.preventDefault(); });
+    });
+
+    // Halaman minggu terkunci: judulnya ikut ditandai.
+    if (document.documentElement.hasAttribute("data-locked")) {
+      document.title = "Segera hadir | " + document.title;
+    }
+  }
+
   /* ---------- 9. Init ----------------------------------------------------- */
   function init() {
     initTheme();
@@ -493,6 +535,7 @@
     initToc();
     initScrollUi();
     initPersistence();
+    initReleaseGate();
   }
 
   if (document.readyState === "loading") {
