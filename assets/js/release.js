@@ -15,7 +15,7 @@
    perlu diubah.
    ========================================================================= */
 
-window.RELEASED_WEEKS = [1];
+window.RELEASED_WEEKS = [1,2];
 
 /* ------------------------------------------------------------------------
    Di bawah baris ini tidak perlu diubah.
